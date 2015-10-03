@@ -1,0 +1,48 @@
+﻿<div id="toolBox" class="toolBox" style="cursor: pointer"></div>
+
+<div class="container body-content" style="cursor: pointer">
+    <div id="main">
+        <div class="overlay" id="overlay" style="display: none;"></div>
+        <div id="dashboard"></div>
+    </div>
+</div>
+
+<script>
+    directive.create(application, widgetDataTable.name, "/HtmlTemplates/DataTable.html");
+    directive.create(application, widgetRangeFilter.name, "/HtmlTemplates/RangeFilter.html");
+    directive.create(application, widgetSelectorFilter.name, "/HtmlTemplates/SelectorFilter.html");
+    directive.create(application, widgetHighChart.name, "/HtmlTemplates/ChartConfig.html");
+    directive.create(application, moduleToolBox.name, "/HtmlTemplates/ToolBox.html");
+    directive.create(application, widgetProgressBarFiltered.name, "/HtmlTemplates/ProgressBarFiltered.html");
+
+    var core = core(sandBox, eventManager, widgetManager, moduleToolBox);
+
+    var currentWindowOnload = window.onload;
+    window.onload = function () {
+        if (currentWindowOnload) {
+            currentWindowOnload();
+        }
+        core.startModule(moduleDashBoard, document);
+        core.startModule(moduleDragDrop(document.getElementById("dashboard")));
+        core.startModule(moduleFiltering);
+        core.startModule(moduleToolBox, document.getElementById("toolBox"));
+
+        var widgets = [widgetDataTable, widgetRangeFilter, widgetSelectorFilter, widgetHighChart, widgetProgressBarFiltered];
+
+        registerWidgets(core, widgets);
+
+        seedMethod(core, widgets, document.getElementById("dashboard"));
+
+    };
+
+    function registerWidgets(core, widgets) {
+        widgets.forEach(core.registerWidget);
+    }
+
+    function seedMethod(core, widgets, dashboard) {
+        widgets.forEach(function (widget) {
+            core.startWidget(widget.name, angularHelper.createElement(dashboard, widget.name));
+        });
+        core.stopAllWidgets();
+    }
+</script>

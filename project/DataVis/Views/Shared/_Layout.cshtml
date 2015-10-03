@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html ng-app="application">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.Net 134</title>
+    <script src="~/Scripts/Libraries/angular.js"></script>
+    <script src="~/Scripts/Libraries/angular-route.js"></script>
+    <script src="~/Scripts/Libraries/angular-loader.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+    <script src="~/Scripts/Libraries/ui-bootstrap-0.12.1.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/libraries")
+    @Scripts.Render("~/bundles/scripts")
+    @Scripts.Render("~/bundles/widgets")
+    @Scripts.Render("~/bundles/modules")
+    @Scripts.Render("~/bundles/themes")
+    @Scripts.Render("~/bundles/highchart")
+    <script>
+        var application = angular.module('application', ['ui.bootstrap']);
+    </script>
+    <script src="~/Scripts/angularControllers/headerController.js"></script>
+    <script src="~/Scripts/angularControllers/modalInputController.js"></script>
+    <script src="~/Scripts/angularControllers/shareDashboardController.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("Home", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+
+            <div class="navbar-form navbar-right">
+                @{
+                    if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-default" onclick=proxy.logOut()>Log Out</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-default" href="/home/login">Sign in</a>
+                        <a class="btn btn-default" href="/home/register">Register</a>
+                    }
+                }
+            </div>
+            @{
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    <div class="navbar-text navbar-right">Signed in as<strong> @HttpContext.Current.User.Identity.Name</strong></div>
+                    <div id="mySelect" ng-controller="headerController">
+                        <div class="navbar-form">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <span class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                            Data
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                            <li class="btn-file">Open file <input type="file" id="fileToUpload" onchange="proxy.openFile()"></li>
+                                        </ul>
+                                    </span>
+                                    <label class='control-label'>Current Dashboard: </label>
+                                    <select class='form-control header' ng-model='currentDashboard' ng-options='opt as opt for opt in dashboardOptions' ng-change='changeCurrentDashboard()'></select>
+                                </div>
+
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="saveEditDashboard()" value="Save">
+                                    {{saveEditDashboardButton}}
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="deleteDashboard()" ng-show="showDeleteButton">
+                                    Delete
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="shareDashboard()">
+                                    Share
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <br />
+    @RenderBody()
+</body>
+</html>

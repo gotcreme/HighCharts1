@@ -1,0 +1,296 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.highChart {
+    height: auto;
+    width: auto;
+    position: absolute !important;
+}
+
+.chartConfig {
+    position: absolute;
+}
+
+.dataTable {
+    position: absolute !important;
+}
+
+.tableContainer {
+    position: absolute;
+    top: 55px;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+}
+
+.progressBarFiltered {
+    min-width: 100px;
+    min-height: 30px;
+    position: absolute !important;
+}
+
+.progressBarFilteredContainer {
+    position: absolute;
+    top: 55px;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    margin: 0;
+    padding: 10px;
+    overflow: auto;
+    border: 2px;
+}
+
+#chart {
+    width: 700px;
+    overflow: hidden;
+}
+#chartConfigButton {
+    width: 100%;
+}
+
+
+#toolBox {
+    width: auto;
+    float: left;
+}
+
+td {
+    padding: 5px;
+    margin: 0px;
+    border: 1px solid gray;
+}
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+.rangeFilter {
+    position: absolute;
+}
+
+.selectorFilter {
+    position: absolute;
+}
+
+.filterBtn {
+    width: 90px;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    margin-bottom: 2px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.rangeBorderLbl {
+    width: 50px;
+    font-weight: bold;
+}
+
+.rangeBorderTxt {
+    width: 60px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: ridge;
+}
+
+.filterDropDown{
+    color: white;
+    background-color: #425368;
+}
+
+.filterDropDown option{
+    color: white;
+}
+
+#filterTableWrapper {
+    position: relative;
+}
+
+#filterTableScroll {
+    height: 100px;
+    overflow: auto;
+}
+
+select.form-control.header {
+    width: 400px;
+}
+
+select.form-control.modalWindow {
+    width: 100%;
+}
+
+.widgetHeader {
+    width: 100%;
+    height: 25px;
+    overflow: hidden;
+    background-color: gray;
+    cursor: move;
+}
+
+.widget-header-toolbar {
+    float: right;
+    margin-right: 5px;
+    height: 30px;
+    overflow: visible;
+}
+
+
+.close-btn a {
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.focus-btn a {
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.overlay {
+    background: black;
+    opacity: .9;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 1090;
+}
+
+
+#cnt1 {
+    width: 100%;
+}
+
+.feature {
+    padding: 20px 0;
+    text-align: center;
+}
+
+    .feature > div > div {
+        padding: 10px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        transition: 0.2s;
+    }
+
+    .feature > div:hover > div {
+        margin-top: -10px;
+        border: 1px solid rgb(128, 128, 128);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 5px;
+        background: rgba(232, 215, 215, 0.10);
+        transition: 0.3s;
+    }
+
+.col-5ths {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 20%;
+    float: left;
+}
+
+.widgetHeaderBtn {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.widgetHeaderBtn:hover,
+.widgetHeaderBtn:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+ .panel-success {
+     margin: 0;
+ }
+ /* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
